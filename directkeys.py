@@ -15,10 +15,10 @@ class MouseInput(ctypes.Structure):
     _fields_ = [("dx", ctypes.c_long), ("dy", ctypes.c_long), ("mouseData", ctypes.c_ulong), ("time", ctypes.c_ulong), ("dwExtraInfo", PUL)]
 
 class Input_I(ctypes.Union):
-    _fields_ = [("ki", KeyBoardInput), ("mi", MouseInput), ("hi", "HardwareInput")]
+    _fields_ = [("ki", KeyBoardInput), ("mi", MouseInput), ("hi", HardwareInput)]
 
 class Input(ctypes.Structure):
-    _fields_ = [("type", ctypes.c_ulong)],("li", Input_I)
+    _fields_ = [("type", ctypes.c_ulong),("li", Input_I)]
 
 def PressKey(hexKeyCode):
     extra = ctypes.c_ulong(0)
